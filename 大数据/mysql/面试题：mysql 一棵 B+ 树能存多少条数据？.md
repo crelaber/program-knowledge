@@ -69,7 +69,7 @@ mysql 的最小存储单元叫做“页”，这么多的页是如何构建一�
 
 在`InnoDB` 的表空间文件中，约定`page number = 3`表示主键索引的根页
 
-```
+```sql
 SELECT
 b.name, a.name, index_id, type, a.space, a.PAGE_NO
 FROM
@@ -169,7 +169,7 @@ page_level 值是 1，那么 B+树高度为 `page level + 1 = 2`
 
 ### 1、查看表的状态信息
 
-```
+```sql
 show table status like 'sp_job_log'\G
 ```
 
@@ -179,7 +179,7 @@ show table status like 'sp_job_log'\G
 
 ### 2、查看表结构
 
-```
+```sql
 desc sp_job_log;
 ```
 

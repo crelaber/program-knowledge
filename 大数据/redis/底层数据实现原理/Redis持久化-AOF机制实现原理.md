@@ -29,13 +29,17 @@ appendfilename "appendonly.aof"
 设置日志的写回策略，默认是 everysec（下文会说明几种写回策略的区别）：
 
 ```
-# 每秒写回策略appendfsync everysec
+# 每秒写回策略
+appendfsync everysec
 ```
 
 设置日志自动重写的触发条件：
 
 ```
-# 当日志比上次重写时大小增长了一倍auto-aof-rewrite-percentage 100# 当日志大小大于 64mbauto-aof-rewrite-min-size 64mb
+# 当日志比上次重写时大小增长了一倍
+auto-aof-rewrite-percentage 100
+# 当日志大小大于 64m
+bauto-aof-rewrite-min-size 64mb
 ```
 
 配置完成后，重启 Redis 服务器，通过客户端执行写入命令：

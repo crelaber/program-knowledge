@@ -50,8 +50,13 @@ Redis hash 是一个键值\(key=>value\)对集合。Redis hash是一个string类
 
 3. List列表语法
 
-```
-//在 key 对应 list 的头部添加字符串元素LPUSH KEY_NAME VALUE1.. VALUEN//在 key 对应 list 的尾部添加字符串元素RPUSH KEY_NAME VALUE1..VALUEN//对应 list 中删除 count 个和 value 相同的元素LREM KEY_NAME COUNT VALUE//返回 key 对应 list 的长度LLEN KEY_NAME
+```shell
+//在 key 对应 list 的头部添加字符串元素
+LPUSH KEY_NAME VALUE1.. VALUEN
+//在 key 对应 list 的尾部添加字符串元素
+RPUSH KEY_NAME VALUE1..VALUEN
+//对应 list 中删除 count 个和 value 相同的元素
+LREM KEY_NAME COUNT VALUE //返回 key 对应 list 的长度LLEN KEY_NAME
 ```
 
 Redis 列表是简单的字符串列表，按照插入顺序排序。可以添加一个元素到列表的头部（左边）或者尾部（右边）
