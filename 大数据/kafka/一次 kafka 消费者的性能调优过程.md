@@ -58,7 +58,7 @@ Context居然执行过24W的goroutine。这里有点要说明的，上文的图�
 
 看到这里，结合框架的代码就看出问题了。`Context.WithDeadline()`这个方法，会创建定时器，上面的注释也给我们说了，当上下文完成时要立马调用`cancel`来释放资源。但框架里用到这个函数的地方，只在err的时候立马释放了，正常情况的定时器，全都等到了执行时间执行，然后才释放资源所以才有那么多的goroutine执行。
 
-```
+```go
 ctx, cancelFunc := context.WithTimeout(context.Background(), 5*time.Second)
 err := s.Limiter.Wait(ctx)
 if err != nil {
@@ -79,7 +79,7 @@ if err != nil {
 
 大量的定时器调度，导致了GMP的调度需要很高的CPU，我是这么理解的。解决问题的办法更简单了，调用完成后直接`cancel()`，如
 
-```
+```go
 ctx, cancelFunc := context.WithTimeout(context.Background(), 5*time.Second)
 err := s.Limiter.Wait(ctx)
 if err != nil {

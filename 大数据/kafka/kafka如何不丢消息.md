@@ -16,7 +16,7 @@ Kafka 消息框架，大家一定不陌生，很多人工作中都有接触。�
 
 生产端的职责就是，确保生产的消息能到达MQ服务端，这里我们需要有一个响应来判断本次的操作是否成功。
 
-```
+```java
 Future<RecordMetadata> send(ProducerRecord<K, V> record, Callback callback)
 ```
 
@@ -45,9 +45,6 @@ Future<RecordMetadata> send(ProducerRecord<K, V> record, Callback callback)
 ![图片](https://mmbiz.qpic.cn/mmbiz_jpg/2KTof9YshwfJHeDicSic4poKsekZn3eJPoSya97EfdAlpibg6icXeSm1Bav0iaS2UH9TByKdymEcicQqwueXGxR7AZEA/640?wx_fmt=jpeg&wxfrom=5&wx_lazy=1&wx_co=1)
 
 **当生产端做完这些，一定能保证消息发送成功了，但可能发送多次，这样就会导致消息重复，这个我们后面再讲解决方案**
-
-**
-**
 
 ## 2、MQ服务端
 
